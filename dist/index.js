@@ -1,0 +1,1 @@
+import o from"fs-extra";import"node:path";import"node:url";import*as e from"@clack/prompts";const{version:r}=JSON.parse(o.readFileSync(new URL("../package.json",import.meta.url),"utf-8"));console.log(`\n${grey(`create-staging@${r}\n`)}`),e.spinner(),e.intro("Welcome to use staging!");
