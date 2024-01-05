@@ -2,34 +2,29 @@
   "name": "staging",
   "version": "1.0.0",
   "description": "frontEnd staging",
-  "main": "index.js",
-  "bin": {
-    "create-staging": "index.js"
-  },
   "scripts": {
-    "build": "rollup -c",
-    "update": "node scripts/update",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git-cz && git push",
+    "add": "pnpm changeset add",
+    "push": "pnpm changeset publish",
+    "build:staging-cli": "pnpm --filter staging-mode build",
+    "build:staging-utils": "pnpm --filter staging-utils build"
   },
-  "files": [
-    "dist/**",
-    "templates/**"
-  ],
   "engines": {
     "node": ">=14.14"
   },
   "dependencies": {
-    "@clack/prompts": "^0.7.0",
-    "fs-extra": "^11.1.1",
-    "kleur": "^4.1.5",
-    "minimist": "^1.2.8"
+    "@changesets/cli": "^2.26.0",
+    "commitizen": "^4.3.0",
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-git": "^1.6.1",
+    "typescript": "^4.9.5"
   },
-  "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.3",
-    "rollup": "^3.29.0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module"
+  "keywords": ["staging", "frontEnd"],
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
 }

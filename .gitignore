@@ -5,3 +5,5 @@ pnpm-lock.yaml
 
 /templates/react-vite-tailwind/node_modules
 /templates/react-vite-tailwind/pnpm-lock.yaml
+
+/packages/**/node_modules

@@ -1,0 +1,33 @@
+{
+  "name": "cli-mode",
+  "version": "1.0.0",
+  "description": "frontEnd staging",
+  "main": "index.js",
+  "bin": {
+    "create-staging": "index.js"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "files": [
+    "dist/**",
+    "templates/**"
+  ],
+  "engines": {
+    "node": ">=14.14"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "fs-extra": "^11.1.1",
+    "kleur": "^4.1.5",
+    "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
+    "rollup": "^3.29.0"
+  },
+  "keywords": [],
+  "author": "songyu",
+  "license": "ISC",
+  "type": "module"
+}

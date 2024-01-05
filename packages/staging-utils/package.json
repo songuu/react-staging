@@ -1,0 +1,32 @@
+{
+  "name": "staging-utils",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-esm.json"
+  },
+  "files": [
+    "dist/**",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "react",
+    "vue",
+    "webpack",
+    "rollup",
+    "cli",
+    "ts"
+  ],
+  "author": "songyu",
+  "dependencies": {
+    "chalk": "4.0.0",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.3"
+  }
+}
