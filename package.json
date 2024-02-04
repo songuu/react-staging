@@ -1,27 +1,33 @@
 {
   "name": "staging",
   "version": "1.0.0",
-  "description": "frontEnd staging",
+  "description": "基于pnpm+monorepo+rollup开发的前端脚手架",
   "scripts": {
     "commit": "git-cz && git push",
     "add": "pnpm changeset add",
     "push": "pnpm changeset publish",
-    "build:staging-cli": "pnpm --filter staging-mode build",
-    "build:staging-utils": "pnpm --filter staging-utils build"
+    "build:stage-utils": "pnpm --filter stage-utils build",
+    "build:stage-cli": "pnpm --filter core build"
   },
   "engines": {
     "node": ">=14.14"
   },
   "dependencies": {
-    "@changesets/cli": "^2.26.0",
+    "@changesets/cli": "^2.27.1",
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
     "commitizen": "^4.3.0",
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.5",
     "cz-conventional-changelog": "^3.3.0",
-    "cz-git": "^1.6.1",
-    "typescript": "^4.9.5"
+    "cz-git": "^1.8.0",
+    "typescript": "^5.3.3",
+    "validate-npm-package-name": "^5.0.0"
   },
-  "keywords": ["staging", "frontEnd"],
+  "keywords": [
+    "staging",
+    "frontEnd",
+    "前端脚手架",
+    "react"
+  ],
   "config": {
     "commitizen": {
       "path": "node_modules/cz-git"

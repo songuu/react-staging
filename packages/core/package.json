@@ -1,0 +1,45 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "frontEnd staging",
+  "bin": {
+    "create-stage": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "files": [
+    "dist/**",
+    "templates/**"
+  ],
+  "engines": {
+    "node": ">=14.14"
+  },
+  "dependencies": {
+    "@types/prompts": "^2.4.9",
+    "prompts": "^2.4.2",
+    "fs-extra": "^11.2.0",
+    "kleur": "^4.1.5",
+    "minimist": "^1.2.8",
+    "axios": "^1.6.7",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.0.1",
+    "tar": "^6.2.0",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/minimist": "^1.2.5",
+    "@types/fs-extra": "^11.0.4",
+    "@types/tar": "^6.1.11",
+    "@types/ejs": "^3.1.5",
+    "rollup": "^4.9.6",
+    "rollup-plugin-copy": "^3.5.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup-plugin-typescript2": "^0.36.0"
+  },
+  "keywords": [],
+  "author": "songyu",
+  "license": "ISC",
+  "type": "module"
+}

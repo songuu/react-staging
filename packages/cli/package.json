@@ -1,0 +1,34 @@
+{
+  "name": "create-stage",
+  "version": "1.0.0",
+  "description": "frontEnd staging",
+  "main": "index.js",
+  "bin": {
+    "create-stage": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "files": [
+    "dist/**",
+    "templates/**"
+  ],
+  "engines": {
+    "node": ">=14.14"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "fs-extra": "^11.2.0",
+    "kleur": "^4.1.5",
+    "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.6",
+    "rollup-plugin-copy": "^3.5.0"
+  },
+  "keywords": [],
+  "author": "songyu",
+  "license": "ISC",
+  "type": "module"
+}
