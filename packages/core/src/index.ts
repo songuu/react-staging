@@ -301,8 +301,13 @@ async function init() {
     await cb(dataStore)
   }
 
-  // EJS template rendering
-  // ejs 模板引擎转换
+  console.log(cyan(`\nScaffolding project files...`), dataStore)
+
+  /* 
+  * ejs 模板引擎转换
+  * 将html和js文件中的ejs模板引擎转换为对应的文件
+  * 1. 主要是因为一个项目一般只有一个html文件，所以这里直接转换
+  */
   preOrderDirectoryTraverse(
     projectRoot,
     () => { },
@@ -310,13 +315,44 @@ async function init() {
       if (filepath.endsWith('.ejs')) {
         const template = fs.readFileSync(filepath, 'utf-8')
         const dest = filepath.replace(/\.ejs$/, '')
-        const content = ejs.render(template, dataStore[dest])
+
+        let content = '';
+
+        if (dest.includes('html')) {
+          content = ejs.render(template, {
+            buildTool,
+            needsTypeScript
+          })
+        } else {
+          content = ejs.render(template, dataStore[dest])
+        }
+
 
         fs.writeFileSync(dest, content)
         fs.unlinkSync(filepath)
       }
     }
   )
+
+  if (needsTypeScript) {
+    preOrderDirectoryTraverse(projectRoot, (dir) => { }, (filepath) => {
+      if (filepath.endsWith('.js')) {
+        const tsFilePath = filepath.replace(/\.js$/, '.ts')
+        if (fs.existsSync(tsFilePath)) {
+          fs.unlinkSync(filepath)
+        } else {
+          fs.renameSync(filepath, tsFilePath)
+        }
+      } else if (path.basename(filepath) === 'jsconfig.json') {
+        fs.unlinkSync(filepath)
+      }
+    })
+
+    // Rename entry in `index.html`
+    const indexHtmlPath = path.resolve(projectRoot, 'index.html')
+    const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf8')
+    fs.writeFileSync(indexHtmlPath, indexHtmlContent.replace('src/main.js', 'src/main.ts'))
+  }
 }
 
 init().catch((e) => {

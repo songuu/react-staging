@@ -9,5 +9,12 @@
 
 <body>
   <div id="root" style="height: 100%; overflow: hidden; display: flex"></div>
+  <% if (buildTool === 'vite') { %>
+    <% if (needsTypeScript) { %>
+      <script type="module" src="/src/main.tsx"></script>
+    <% } else { %>
+      <script type="module" src="/src/main.jsx"></script>
+    <% } %>
+  <% } %>
 </body>
 </html>
