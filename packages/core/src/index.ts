@@ -6,7 +6,7 @@ import * as path from 'node:path'
 import ejs from 'ejs'
 import minimist from 'minimist'
 import prompts from 'prompts'
-import { cyan, grey, red } from 'kleur/colors'
+import { cyan, grey, red, bold, green } from 'kleur/colors'
 
 import { defaultToggleOptions, packageVersion } from './config'
 
@@ -15,6 +15,8 @@ import { postOrderDirectoryTraverse, preOrderDirectoryTraverse } from './utils/d
 import renderTemplate from './utils/renderTemplate'
 
 import { __dirname } from './utils/paths'
+
+import getCommand from './utils/getCommand'
 
 function emptyDir(dir: string) {
   if (!fs.existsSync(dir)) {
@@ -36,6 +38,7 @@ function emptyDir(dir: string) {
 *    4. 是否使用husky
 *    5. 是否使用lint-staged
 *    6. 是否使用单元测试
+*       1. 不使用
 *       1. 是否使用jest
 *       2. 是否使用vitest
 *    7. 使用管理工具
@@ -46,6 +49,10 @@ function emptyDir(dir: string) {
 *       1. vite
 *       2. webpack
 *       3. rollup
+*    9. 原子化css
+*       1. 不使用
+*       2. 使用tailwindcss
+*       3. 使用windicss
 */
 
 async function init() {
@@ -99,7 +106,8 @@ async function init() {
     needsJest?: boolean
     needsVitest?: boolean
     managementTool?: string
-    buildTool?: string
+    buildTool?: string,
+    atomizationcss?: string
   } = {}
 
   try {
@@ -186,6 +194,18 @@ async function init() {
           { title: 'webpack', value: 'webpack' },
           { title: 'rollup', value: 'rollup' },
         ],
+      },
+      {
+        name: 'atomizationcss',
+        type: () => (isFeatureFlagsUsed ? null : 'select'),
+        message: 'Use atomization css?',
+        hint: 'choose a atomization css',
+        initial: 0,
+        choices: () => [
+          { title: 'No', value: false },
+          { title: 'tailwindcss', value: 'tailwindcss' },
+          { title: 'windicss', value: 'windicss' },
+        ],
       }
     ])
   } catch (error) {
@@ -202,8 +222,9 @@ async function init() {
   const needsUnitTesting = argv['unit-testing'] || result.needsUnitTesting
   const needsJest = argv.jest || result.needsJest
   const needsVitest = argv.vitest || result.needsVitest
-  const managementTool = result.managementTool
-  const buildTool = result.buildTool
+  const managementTool = result.managementTool || 'pnpm'
+  const buildTool = result.buildTool || 'vite'
+  const atomizationcss = result.atomizationcss || false
 
   const projectRoot = path.join(cwd, targetDir)
 
@@ -288,9 +309,23 @@ async function init() {
 
   if (needsUnitTesting) {
     if (needsJest) {
-      render('jest')
+      render('config/jest')
     } else if (needsVitest) {
       render('config/vitest')
+    }
+  }
+
+  if (atomizationcss) {
+    switch (atomizationcss) {
+      case 'tailwindcss':
+        render('config/tailwindcss')
+        render('entry/tailwindcss')
+        break
+      case 'windicss':
+        render('config/windicss')
+        break
+      default:
+        break
     }
   }
 
@@ -300,8 +335,6 @@ async function init() {
   for (const cb of callbacks) {
     await cb(dataStore)
   }
-
-  console.log(cyan(`\nScaffolding project files...`), dataStore)
 
   /* 
   * ejs 模板引擎转换
@@ -320,6 +353,7 @@ async function init() {
 
         if (dest.includes('html')) {
           content = ejs.render(template, {
+            title: projectName,
             buildTool,
             needsTypeScript
           })
@@ -352,7 +386,31 @@ async function init() {
     const indexHtmlPath = path.resolve(projectRoot, 'index.html')
     const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf8')
     fs.writeFileSync(indexHtmlPath, indexHtmlContent.replace('src/main.js', 'src/main.ts'))
+  } else {
+    preOrderDirectoryTraverse(
+      projectRoot,
+      () => { },
+      (filepath) => {
+        if (filepath.endsWith('.ts')) {
+          fs.unlinkSync(filepath)
+        }
+      }
+    )
   }
+
+  if (cwd !== projectRoot) {
+    console.log(cyan('cd'), path.relative(cwd, projectRoot))
+  }
+
+  console.log(bold(green(getCommand(managementTool, 'install'))))
+
+  if (needsPrettier) {
+    console.log(`  ${bold(green(getCommand(managementTool, 'format')))}`)
+  }
+
+  console.log(bold(green(getCommand(managementTool, 'dev'))))
+
+  console.log()
 }
 
 init().catch((e) => {
