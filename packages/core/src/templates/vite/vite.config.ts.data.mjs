@@ -2,9 +2,9 @@ export default function getData({ oldData, deps }) {
   const plugins = []
   if (deps?.atomizationcss === 'windicss') {
     plugins.push({
-      id: 'WindiCSSWebpackPlugin',
-      importer: "import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'",
-      initializer: 'new WindiCSSWebpackPlugin()',
+      id: 'WindiCSS',
+      importer: "import WindiCSS from 'vite-plugin-windicss'",
+      initializer: 'WindiCSS()',
     })
   }
 

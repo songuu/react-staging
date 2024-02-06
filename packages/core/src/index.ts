@@ -344,6 +344,7 @@ async function init() {
       break
     case 'rollup':
       render('config/rollup')
+      render('rollup')
       break
     default:
       break
