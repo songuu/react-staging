@@ -241,7 +241,7 @@ async function init() {
   const callbacks: any[] = []
   const render = function render(templateName: string) {
     const templateDir = path.resolve(templateRoot, templateName)
-    renderTemplate(templateDir, projectRoot, callbacks)
+    renderTemplate(templateDir, projectRoot, callbacks, JSON.stringify(result))
   }
 
   render('base')
@@ -323,10 +323,30 @@ async function init() {
         break
       case 'windicss':
         render('config/windicss')
+        render('windicss/base')
         break
       default:
         break
     }
+  }
+
+  render("entry/default")
+  render("code/router")
+
+  switch (buildTool) {
+    case 'vite':
+      render('config/vite')
+      render('vite')
+      break
+    case 'webpack':
+      render('config/webpack')
+      render('webpack')
+      break
+    case 'rollup':
+      render('config/rollup')
+      break
+    default:
+      break
   }
 
   // An external data store for callbacks to share data
@@ -405,7 +425,7 @@ async function init() {
   console.log(bold(green(getCommand(managementTool, 'install'))))
 
   if (needsPrettier) {
-    console.log(`  ${bold(green(getCommand(managementTool, 'format')))}`)
+    console.log(bold(green(getCommand(managementTool, 'format'))))
   }
 
   console.log(bold(green(getCommand(managementTool, 'dev'))))

@@ -1,0 +1,11 @@
+<%_ for (const { importer } of plugins) { _%>
+<%- importer %>
+<%_ } _%>
+
+module.exports = {
+  plugins: [
+  <%_ for (const { initializer } of plugins) { _%>
+    <%- initializer _%>,
+  <%_ } _%>
+  ],
+};

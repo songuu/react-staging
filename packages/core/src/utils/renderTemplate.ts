@@ -11,7 +11,7 @@ import deepMerge from './deepMerge';
  * @param {string} src source filename to copy
  * @param {string} dest destination filename of the copy operation
  */
-function renderTemplate(src: string, dest: string, callbacks: any[]) {
+function renderTemplate(src: string, dest: string, callbacks: any[], result: string) {
   const stats = fs.statSync(src)
 
   if (stats.isDirectory()) {
@@ -23,7 +23,7 @@ function renderTemplate(src: string, dest: string, callbacks: any[]) {
     // if it's a directory, render its subdirectories and files recursively
     fs.mkdirSync(dest, { recursive: true })
     for (const file of fs.readdirSync(src)) {
-      renderTemplate(path.resolve(src, file), path.resolve(dest, file), callbacks)
+      renderTemplate(path.resolve(src, file), path.resolve(dest, file), callbacks, result)
     }
     return
   }
@@ -64,7 +64,8 @@ function renderTemplate(src: string, dest: string, callbacks: any[]) {
 
       // Though current `getData` are all sync, we still retain the possibility of async
       dataStore[dest] = await getData({
-        oldData: dataStore[dest] || {}
+        oldData: dataStore[dest] || {},
+        deps: JSON.parse(result)
       })
     })
 
