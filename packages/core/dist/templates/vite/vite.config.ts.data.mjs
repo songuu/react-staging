@@ -8,6 +8,14 @@ export default function getData({ oldData, deps }) {
     })
   }
 
+  if (deps?.atomizationcss === 'unocss') {
+    plugins.push({
+      id: 'Unocss',
+      importer: "import UnoCSS from 'unocss/vite'",
+      initializer: 'UnoCSS()',
+    })
+  }
+
   return {
     plugins: plugins,
   }

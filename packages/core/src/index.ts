@@ -53,6 +53,7 @@ function emptyDir(dir: string) {
 *       1. 不使用
 *       2. 使用tailwindcss
 *       3. 使用windicss
+*       4. 使用unocss
 */
 
 async function init() {
@@ -205,6 +206,7 @@ async function init() {
           { title: 'No', value: false },
           { title: 'tailwindcss', value: 'tailwindcss' },
           { title: 'windicss', value: 'windicss' },
+          { title: 'unocss', value: 'unocss' }
         ],
       }
     ])
@@ -325,6 +327,10 @@ async function init() {
         render('config/windicss')
         render('windicss/base')
         break
+      case 'unocss':
+        render('config/unocss')
+        render('unocss')
+        break
       default:
         break
     }
@@ -340,7 +346,7 @@ async function init() {
       break
     case 'webpack':
       render('config/webpack')
-      render('webpack')
+      render('webpack/base')
       break
     case 'rollup':
       render('config/rollup')
