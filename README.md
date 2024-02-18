@@ -27,11 +27,11 @@
 
 ### 二：执行命令
 
-- pnpm run build:staging-cli
+- pnpm run build:stage-cli
 
 - 当前目录使用
   - pnpm link .
-  - npx create-staging
+  - npx create-stage
 - 全局使用
   - pnpm link .
   - pnpm link -g

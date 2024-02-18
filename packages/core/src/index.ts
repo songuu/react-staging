@@ -14,6 +14,8 @@ import { postOrderDirectoryTraverse, preOrderDirectoryTraverse } from './utils/d
 
 import renderTemplate from './utils/renderTemplate'
 
+import renderEslint from './utils/renderEslint'
+
 import { __dirname } from './utils/paths'
 
 import getCommand from './utils/getCommand'
@@ -293,9 +295,12 @@ async function init() {
     )
   }
 
-  // if (needsEslint) {
-  //   render('eslint')
-  // }
+  if (needsEslint) {
+    renderEslint(projectRoot, {
+      needsTypeScript,
+      needsPrettier
+    })
+  }
 
   // if (needsPrettier) {
   //   render('prettier')

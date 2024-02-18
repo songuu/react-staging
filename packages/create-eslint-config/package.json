@@ -1,0 +1,35 @@
+{
+  "name": "create-eslint-config",
+  "version": "1.0.0",
+  "description": "ESLint configuration for creating JavaScript projects",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "create-eslint-config": "bin/create-eslint-config.js"
+  },
+  "engines": {
+    "node": "^16.14.0 || >= 18.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint",
+    "config",
+    "javascript"
+  ],
+  "author": "songyu",
+  "license": "MIT",
+  "dependencies": {
+    "enquirer": "^2.4.1",
+    "javascript-stringify": "^2.1.0",
+    "kolorist": "^1.8.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.7.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "standard": "^17.1.0",
+    "typescript": "~5.3.3"
+  }
+}

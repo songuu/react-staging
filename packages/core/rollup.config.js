@@ -1,6 +1,7 @@
 import terser from '@rollup/plugin-terser'
 import copy from 'rollup-plugin-copy'
 import ts from 'rollup-plugin-typescript2'
+import del from 'rollup-plugin-delete'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -12,6 +13,7 @@ export default {
   output: [{ file: 'dist/index.js', format: 'es' }],
   external: ['path', 'fs-extra', '@clack/prompts', 'kleur/colors', 'minimist'],
   plugins: [
+    del({ targets: 'dist/*' }),
     terser(),
     ts({
       tsconfig: path.resolve(__dirname, 'tsconfig.json'),
