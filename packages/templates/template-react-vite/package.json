@@ -1,6 +1,6 @@
 {
   "name": "template-react-vite",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
   "files": [
     "template"
@@ -26,7 +26,12 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4",
-    "meiqia-configs": "^1.0.5"
-  }
+    "vite": "^5.1.4"
+  },
+  "description": "The base template for Create stage.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songuu/react-staging",
+    "directory": "packages/templates/template-react-vite"
+  },
 }

@@ -10,7 +10,9 @@ import { cyan, grey, red, bold, green } from 'kleur/colors'
 
 import { defaultToggleOptions, packageVersion } from './config'
 
-import { postOrderDirectoryTraverse, preOrderDirectoryTraverse } from './utils/directoryTraverse'
+import { emptyDir } from './utils/helper'
+
+import { preOrderDirectoryTraverse } from './utils/directoryTraverse'
 
 import renderTemplate from './utils/renderTemplate'
 
@@ -19,18 +21,6 @@ import renderEslint from './utils/renderEslint'
 import { __dirname } from './utils/paths'
 
 import getCommand from './utils/getCommand'
-
-function emptyDir(dir: string) {
-  if (!fs.existsSync(dir)) {
-    return
-  }
-
-  postOrderDirectoryTraverse(
-    dir,
-    (dir: string) => fs.rmdirSync(dir),
-    (file: string) => fs.unlinkSync(file)
-  )
-}
 
 /* 
 * 1. 使用命令拼装式创建项目

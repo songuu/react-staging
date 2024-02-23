@@ -1,5 +1,10 @@
 {
   "name": "template-react-webpack",
-  "version": "0.0.1",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songuu/react-staging",
+    "directory": "packages/templates/template-react-webpack"
+  }
 }
