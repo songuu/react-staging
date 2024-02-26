@@ -4,7 +4,12 @@
   "description": "ESLint configuration for creating JavaScript projects",
   "type": "module",
   "main": "index.js",
-  "private": true,
+  "homepage": "https://github.com/songuu/react-staging",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songuu/react-staging.git",
+    "directory": "packages/create-eslint-config"
+  },
   "bin": {
     "create-eslint-config": "bin/create-eslint-config.js"
   },

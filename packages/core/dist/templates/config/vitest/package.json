@@ -1,0 +1,12 @@
+{
+  "name": "template/configs/vitest",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "test:unit": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "vitest": "^1.2.2"
+  }
+}

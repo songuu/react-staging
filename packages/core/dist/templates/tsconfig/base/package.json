@@ -1,0 +1,8 @@
+{
+  "name": "template/tsconfg/base",
+  "version": "2.0.0",
+  "private": true,
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2"
+  }
+}

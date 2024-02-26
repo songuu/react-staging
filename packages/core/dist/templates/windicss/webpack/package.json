@@ -1,0 +1,7 @@
+{
+  "name": "template/windcss/webpack",
+  "private": true,
+  "devDependencies": {
+    "windicss-webpack-plugin": "^1.8.0"
+  }
+}

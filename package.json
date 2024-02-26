@@ -6,8 +6,7 @@
     "commit": "git-cz && git push",
     "add": "pnpm changeset add",
     "push": "pnpm changeset publish",
-    "build:stage-utils": "pnpm --filter stage-utils build",
-    "build:stage-cli": "pnpm --filter core build"
+    "build:stage-cli": "pnpm --filter create-stage-template build"
   },
   "engines": {
     "node": ">=14.14"

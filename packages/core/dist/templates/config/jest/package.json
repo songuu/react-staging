@@ -1,0 +1,11 @@
+{
+  "name": "template/configs/jest",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "test:unit": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

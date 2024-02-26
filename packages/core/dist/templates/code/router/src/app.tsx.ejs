@@ -1,0 +1,16 @@
+import React from 'react'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
+
+import Demo from './Demo'
+
+const AllRoutes = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/demo" element={<Demo />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default AllRoutes

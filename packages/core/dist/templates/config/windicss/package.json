@@ -1,0 +1,8 @@
+{
+  "name": "template/configs/windcss",
+  "version": "2.0.0",
+  "private": true,
+  "devDependencies": {
+    "windicss": "^3.5.6"
+  }
+}
