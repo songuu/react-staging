@@ -2,14 +2,14 @@ const template: string[] = [
   "react-vite", "react-webpack"
 ];
 
-export const packageVersion = "1.0.1";
+export const packageVersion = "2.0.0";
 
 function getProjectLink(templates: string[]): Map<string, string> {
   const map = new Map();
   templates.forEach((template: string) => {
     map.set(
       template,
-      `https://registry.npmjs.org/@songyulala/template-${template}/template-${template}-${packageVersion}.tgz`
+      `https://registry.npmjs.org/@songyulala/template-${template}/-/template-${template}-${packageVersion}.tgz`
     );
   });
   return map;
