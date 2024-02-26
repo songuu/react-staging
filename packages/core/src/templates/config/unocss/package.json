@@ -1,5 +1,6 @@
 {
   "name": "template/configs/unocss",
+  "version": "2.0.0",
   "devDependencies": {
     "unocss": "^0.58.5"
   }

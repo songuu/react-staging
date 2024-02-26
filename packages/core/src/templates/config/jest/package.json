@@ -1,5 +1,6 @@
 {
   "name": "template/configs/jest",
+  "version": "2.0.0",
   "scripts": {
     "test:unit": "jest"
   },
