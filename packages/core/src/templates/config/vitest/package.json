@@ -1,4 +1,5 @@
 {
+  "name": "template/configs/vitest",
   "scripts": {
     "test:unit": "vitest"
   },

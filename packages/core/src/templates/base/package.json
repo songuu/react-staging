@@ -1,4 +1,5 @@
 {
+  "name": "template/base",
   "private": true,
   "type": "module",
   "scripts": {

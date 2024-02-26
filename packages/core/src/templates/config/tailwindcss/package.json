@@ -1,4 +1,5 @@
 {
+  "name": "template/configs/tailwind",
   "devDependencies": {
     "tailwindcss": "^3.4.1",
     "postcss": "^8.4.33",

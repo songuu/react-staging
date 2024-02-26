@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "test:unit": "jest"
-  },
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
-}

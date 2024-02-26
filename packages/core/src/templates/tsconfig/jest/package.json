@@ -1,4 +1,5 @@
 {
+  "name": "template/tsconfig/jest",
   "devDependencies": {
     "@types/jsdom": "^21.1.6"
   }

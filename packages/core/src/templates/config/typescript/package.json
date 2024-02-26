@@ -1,4 +1,5 @@
 {
+  "name": "template/configs/typescript",
   "scripts": {
     "build": "tsc --build"
   },

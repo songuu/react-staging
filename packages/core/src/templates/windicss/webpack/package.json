@@ -1,4 +1,5 @@
 {
+  "name": "template/windcss/webpack",
   "devDependencies": {
     "windicss-webpack-plugin": "^1.8.0"
   }

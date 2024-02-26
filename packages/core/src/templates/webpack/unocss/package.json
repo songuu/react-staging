@@ -1,4 +1,5 @@
 {
+  "name": "template/webpack/unocss",
   "devDependencies": {
     "@unocss/webpack": "^0.58.5"
   }

@@ -1,4 +1,5 @@
 {
+  "name": "template/configs/vite",
   "private": true,
   "type": "module",
   "scripts": {
