@@ -4,6 +4,7 @@
   "description": "ESLint configuration for creating JavaScript projects",
   "type": "module",
   "main": "index.js",
+  "private": true,
   "bin": {
     "create-eslint-config": "bin/create-eslint-config.js"
   },
