@@ -66,6 +66,7 @@ export async function getNpmPackage(
       await copyFolderRecursive(join(matter, "package/template"), matter);
 
       removeDirectory(join(matter, "package"), false);
+      
       spinner.succeed(bold(green("Project creation successfully")));
     })
     .catch((error: any) => {

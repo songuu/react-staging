@@ -6,7 +6,7 @@ import * as path from 'node:path'
 import ejs from 'ejs'
 import minimist from 'minimist'
 import prompts from 'prompts'
-import { cyan, grey, red, bold, green } from 'kleur/colors'
+import { cyan, red, bold, green } from 'kleur/colors'
 
 import { defaultToggleOptions, packageVersion } from './config'
 

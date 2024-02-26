@@ -2,7 +2,7 @@
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { execSync, exec } from "child_process";
+import { exec } from "child_process";
 
 import minimist from 'minimist'
 import prompts from 'prompts'
@@ -14,6 +14,10 @@ import { emptyDir } from './utils/helper'
 import { packageVersion } from './config'
 
 import { getNpmPackage } from './utils/fileController'
+
+import sortDependencies from './utils/sortDependencies'
+
+import deepMerge from './utils/deepMerge'
 
 import { projectLink } from './lib/constants'
 
@@ -88,15 +92,22 @@ async function init() {
     fs.mkdirSync(projectRoot)
   }
 
-  const pkg = { name: projectName, version: packageVersion }
-  fs.writeFileSync(path.resolve(projectRoot, 'package.json'), JSON.stringify(pkg, null, 2))
+  // fs.writeFileSync(path.resolve(projectRoot, 'package.json'), JSON.stringify(pkg, null, 2))
 
   // 下载 npm 包解压,并删除一些无用的代码文件
-  getNpmPackage(
+  await getNpmPackage(
     projectLink.get(projectType) as string,
     projectType,
     projectRoot
   );
+
+  const pkg = { name: projectName, version: packageVersion }
+
+  // update package.json
+  const packageJsonPath = path.resolve(projectRoot, 'package.json')
+  const existingPkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+  const updatedPkg = sortDependencies(deepMerge(deepMerge(existingPkg, pkg), { pkg }))
+  await fs.writeFileSync(packageJsonPath, JSON.stringify(updatedPkg, null, 2) + '\n', 'utf-8')
 
   const spinner = ora().start();
   spinner.start(
