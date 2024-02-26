@@ -1,5 +1,5 @@
 {
-  "name": "@stage/utils",
+  "name": "@stage/create-stage-utils",
   "version": "1.1.0",
   "license": "MIT",
   "main": "./dist/cjs/index.js",

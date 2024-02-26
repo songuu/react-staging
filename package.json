@@ -17,7 +17,7 @@
     "@types/eslint": "^8.56.2",
     "@types/validate-npm-package-name": "^4.0.2",
     "commitizen": "^4.3.0",
-    "create-eslint-config": "workspace:^",
+    "@stage/create-eslint-config": "workspace:^",
     "cz-conventional-changelog": "^3.3.0",
     "cz-git": "^1.8.0",
     "typescript": "^5.3.3",
