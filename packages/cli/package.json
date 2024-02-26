@@ -1,5 +1,5 @@
 {
-  "name": "create-stage-cli",
+  "name": "@songyulala/create-stage-cli",
   "version": "1.1.0",
   "description": "frontEnd staging",
   "main": "index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "create-eslint-config",
+  "name": "@songyulala/create-eslint-config",
   "version": "1.1.0",
   "description": "ESLint configuration for creating JavaScript projects",
   "type": "module",
