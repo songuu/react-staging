@@ -1,6 +1,7 @@
 {
   "name": "template/windcss/rollup",
   "version": "2.0.0",
+  "private": true,
   "devDependencies": {
     "rollup-plugin-windicss": "^1.9.3"
   }

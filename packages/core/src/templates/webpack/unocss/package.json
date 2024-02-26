@@ -1,6 +1,7 @@
 {
   "name": "template/webpack/unocss",
   "version": "2.0.0",
+  "private": true,
   "devDependencies": {
     "@unocss/webpack": "^0.58.5"
   }

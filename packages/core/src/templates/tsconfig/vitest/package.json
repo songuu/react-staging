@@ -1,6 +1,7 @@
 {
   "name": "template/tsconfig/vitest",
   "version": "2.0.0",
+  "private": true,
   "devDependencies": {
     "@types/jsdom": "^21.1.6"
   }

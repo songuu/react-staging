@@ -1,6 +1,7 @@
 {
   "name": "template/configs/typescript",
   "version": "2.0.0",
+  "private": true,
   "scripts": {
     "build": "tsc --build"
   },
