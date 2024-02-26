@@ -9,7 +9,7 @@ function getProjectLink(templates: string[]): Map<string, string> {
   templates.forEach((template: string) => {
     map.set(
       template,
-      `https://registry.npmjs.org/@stage/template-${template}-${packageVersion}.tgz`
+      `https://registry.npmjs.org/@songyulala/template-${template}-${packageVersion}.tgz`
     );
   });
   return map;

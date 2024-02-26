@@ -1,5 +1,5 @@
 {
-  "name": "@stage/create-stage-cli",
+  "name": "create-stage-cli",
   "version": "1.1.0",
   "description": "frontEnd staging",
   "main": "index.js",

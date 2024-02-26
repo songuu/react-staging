@@ -4,7 +4,7 @@ import * as path from 'node:path'
 import type { Linter } from 'eslint'
 
 // @ts-ignore
-import createESLintConfig from '@stage/create-eslint-config'
+import createESLintConfig from '@songyulala/create-eslint-config'
 
 import sortDependencies from './sortDependencies'
 import deepMerge from './deepMerge'
