@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { __dirname } from './paths'
+
 type PackageJson = any;
 
 function getPackageJsonInfo(
