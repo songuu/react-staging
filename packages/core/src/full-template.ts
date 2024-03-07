@@ -9,6 +9,8 @@ import prompts from 'prompts'
 import { red, bold, cyan, green } from 'kleur/colors'
 import ora from "ora";
 
+import readPackageJson from './utils/readPackage'
+
 import { emptyDir } from './utils/helper'
 
 import { packageVersion } from './config'
@@ -92,7 +94,13 @@ async function init() {
     fs.mkdirSync(projectRoot)
   }
 
-  // fs.writeFileSync(path.resolve(projectRoot, 'package.json'), JSON.stringify(pkg, null, 2))
+  const packages = readPackageJson(projectType)
+
+  const pkg = { name: projectName, version: packageVersion, ...packages }
+
+  // update package.json
+  const packageJsonPath = path.resolve(projectRoot, 'package.json')
+  await fs.writeFileSync(packageJsonPath, JSON.stringify(pkg, null, 2) + '\n', 'utf-8')
 
   // 下载 npm 包解压,并删除一些无用的代码文件
   await getNpmPackage(
@@ -100,15 +108,6 @@ async function init() {
     projectType,
     projectRoot
   );
-
-  const pkg = { name: projectName, version: packageVersion }
-
-  // update package.json
-  const packageJsonPath = path.resolve(projectRoot, 'package.json')
-  const existingPkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
-  const updatedPkg = sortDependencies(deepMerge(deepMerge(existingPkg, pkg), { pkg }))
-  await fs.writeFileSync(packageJsonPath, JSON.stringify(updatedPkg, null, 2) + '\n', 'utf-8')
-
   const spinner = ora().start();
   spinner.start(
     bold(cyan("The dependency package is being installed..."))
@@ -121,7 +120,6 @@ async function init() {
         console.error(err);
         return;
       }
-      console.log(stdout);
     });
   }
 

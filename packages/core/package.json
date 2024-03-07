@@ -38,12 +38,12 @@
     "@types/fs-extra": "^11.0.4",
     "@types/tar": "^6.1.11",
     "@types/ejs": "^3.1.5",
-    "rollup": "^4.9.6",
+    "rollup": "^4.12.1",
     "rollup-plugin-copy": "^3.5.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "rollup-plugin-typescript2": "^0.36.0",
     "rollup-plugin-delete": "^2.0.0",
-    "@types/eslint": "^8.56.2"
+    "@types/eslint": "^8.56.5"
   },
   "keywords": [],
   "author": "songyu",

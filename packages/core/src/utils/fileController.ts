@@ -1,4 +1,4 @@
-import { bold, cyan, grey, red, green } from 'kleur/colors'
+import { bold, cyan, red, green } from 'kleur/colors'
 import ora from "ora";
 import fs from "fs-extra";
 import tar from "tar";
@@ -40,7 +40,8 @@ async function copyFolderRecursive(sourceDir: string, destinationDir: string) {
 export async function getNpmPackage(
   packageURL: string,
   packageName: string,
-  matter: string
+  matter: string,
+  onSuccess?: (str: any) => void
 ): Promise<void> {
   const spinner = ora().start();
   spinner.start(bold(cyan("Creating a project...")));
@@ -65,8 +66,12 @@ export async function getNpmPackage(
       fs.unlinkSync(tgzPath);
       await copyFolderRecursive(join(matter, "package/template"), matter);
 
+      // 读取 package.json 文件
+      const packageJson = await fs.readJsonSync(join(matter, "package/package.json"));
+
+      onSuccess && onSuccess(packageJson);
       removeDirectory(join(matter, "package"), false);
-      
+
       spinner.succeed(bold(green("Project creation successfully")));
     })
     .catch((error: any) => {
