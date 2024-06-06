@@ -1,6 +1,6 @@
 {
   "name": "create-stage-template",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "基于pnpm+monorepo+rollup开发的前端脚手架",
   "scripts": {
     "commit": "git-cz && git push",
@@ -12,9 +12,9 @@
     "node": ">=14.14"
   },
   "dependencies": {
-    "@commitlint/cli": "^19.0.3",
-    "@commitlint/config-conventional": "^19.0.3",
-    "@types/eslint": "^8.56.5",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@types/eslint": "^8.56.6",
     "@types/validate-npm-package-name": "^4.0.2",
     "commitizen": "^4.3.0",
     "@songyulala/create-eslint-config": "workspace:^",
@@ -36,5 +36,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1"
-  }
+  },
+  "files": ["packages/core"]
 }

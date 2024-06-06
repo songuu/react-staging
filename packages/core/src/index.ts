@@ -2,6 +2,8 @@ import { grey } from 'kleur/colors'
 
 import prompts from 'prompts'
 
+import handleUpdate from './utils/version-manage';
+
 import getCustomTemplate from './custom-template';
 import getFullTemplate from './full-template';
 
@@ -9,6 +11,7 @@ import getFullTemplate from './full-template';
 async function init() {
   console.log(`${grey(`create-stage`)}`)
 
+  handleUpdate();
   /* 
   * 确认完整模板还是自定义模板
   */
